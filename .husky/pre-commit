@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+prettier --write "src/**/*.{js,jsx,ts,tsx}"
+npm run lint:fix
