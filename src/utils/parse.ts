@@ -10,8 +10,8 @@ import { Options } from "./types";
 
 export async function htmlExport(file: string, markdownOptions: Options) {
   let { outputFilename, isHtml } = markdownOptions;
-  outputFilename = outputFilename || `${file}-out.txt`;
-  isHtml = false;
+  outputFilename = outputFilename || file.replace(".md", "-out.txt");
+  isHtml = isHtml || false;
 
   const configPath = path.resolve(os.tmpdir(), ".mume");
 
@@ -46,8 +46,6 @@ export async function htmlExport(file: string, markdownOptions: Options) {
   if (!isHtml) {
     await fs.rm(htmlFile);
   }
-
-  process.exit(0);
 }
 
 export function searchMarkdownFiles(markdownOptions: Options) {
@@ -61,7 +59,9 @@ export function searchMarkdownFiles(markdownOptions: Options) {
     }
 
     files.forEach(async (file) => {
-      await htmlExport(file, markdownOptions);
+      await htmlExport(file, markdownOptions).then(() => {
+        process.exit(0);
+      });
     });
   });
 }
