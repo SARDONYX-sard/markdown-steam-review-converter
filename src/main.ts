@@ -1,5 +1,6 @@
 import { Command } from "commander";
 import { searchMarkdownFiles } from "./utils/parse";
+import { Options } from "./utils/types";
 
 export function main() {
   const program = new Command();
@@ -12,7 +13,7 @@ export function main() {
 
   const options = program.opts();
 
-  const markdownOptions = { outputFilename: options.output, isHtml: !!options.isHtml, browser: !!options.browser };
+  const markdownOptions: Options = { outputFilename: options.output, isHtml: !!options.isHtml, browser: !!options.browser };
 
   searchMarkdownFiles(markdownOptions);
 }
