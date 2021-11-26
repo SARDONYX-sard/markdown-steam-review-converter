@@ -1,0 +1,73 @@
+{
+  "name": "markdown-steam-review-converter",
+  "private": "true",
+  "version": "1.0.0",
+  "description": "markdown-steam-review-converter",
+  "keywords": [],
+  "homepage": "https://github.com/SARDONYX-sard/nodejs-website-autorun-set",
+  "bugs": "https://github.com/SARDONYX-sard/nodejs-website-autorun-set/issues",
+  "license": "MIT",
+  "author": "sard",
+  "files": [
+    "lib",
+    "CHANGELOG.md",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SARDONYX-sard/nodejs-website-autorun-set.git"
+  },
+  "main": "build/src/main.js",
+  "scripts": {
+    "start": "ts-node src/main.ts",
+    "lint": "eslint ./src/**/*.ts",
+    "test": "jest --coverage --detectOpenHandles --unhandled-rejections=strict"
+  },
+  "dependencies": {
+    "@shd101wyy/mume": "^0.6.9",
+    "commander": "^8.3.0",
+    "glob": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.2.0",
+    "@types/jest": "26.0.23",
+    "@types/jest-plugin-context": "^2.9.4",
+    "@types/node": "15.12.1",
+    "@typescript-eslint/eslint-plugin": "4.27.0",
+    "@typescript-eslint/parser": "4.27.0",
+    "eslint": "7.29.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jest": "24.3.6",
+    "eslint-plugin-prettier": "3.4.0",
+    "husky": "6.0.0",
+    "jest": "27.0.4",
+    "jest-plugin-context": "^2.9.0",
+    "lint-staged": "11.0.0",
+    "nexe": "^4.0.0-beta.19",
+    "prettier": "2.3.1",
+    "ts-jest": "27.0.3",
+    "ts-node": "10.0.0",
+    "tsconfig-paths": "3.9.0",
+    "typescript": "4.3.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix ./src/**/*",
+      "prettier --write ./src/**/*"
+    ]
+  },
+  "engines": {
+    "node": "^16",
+    "npm": "forbidden, use npm",
+    "pnpm": ">=6",
+    "yarn": "forbidden, use npm"
+  }
+}
